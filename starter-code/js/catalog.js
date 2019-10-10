@@ -43,18 +43,16 @@ var itemCounter = 0;
 function updateCounter() {
   var itemCount = document.getElementById('itemCount');
     itemCounter ++;
-    itemCount.textContent = ` (${itemCounter})`;
+    itemCount.textContent = `  (${itemCounter})`;
 }
 
 function updateCartPreview() {
   var cartItemName = cart[0];
   var cartQuantity = cart[1];
   var cartContents = document.getElementById('cartContents');
-  var newCartList = document.createElement('ul');
+  var newCartList = document.createElement('div');
   cartContents.appendChild(newCartList);
-  var newCartItem = document.createElement('li');
-  newCartItem.textContent = `${cartItemName} x ${cartQuantity}`;
-  newCartList.appendChild(newCartItem);
+  newCartList.textContent = `${cartItemName} x ${cartQuantity}`;
  }
 
 // Set up the "submit" event listener on the form.
