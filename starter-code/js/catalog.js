@@ -25,35 +25,37 @@ function populateForm() {
 function handleSubmit(event) {
 
   event.preventDefault();
-  // Do all the things ...
   addSelectedItemToCart();   
-  cart.saveToLocalStorage();
+  //cart.saveToLocalStorage();
   updateCounter();
   updateCartPreview();
-
 }
 
-// TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
-  // TODO: suss out the item picked from the select list
   var dropdown = document.getElementById('items');
   var selectItem = dropdown.options[dropdown.selectedIndex].text;
-  console.log(selectItem);
-  // TODO: get the quantity
+
   var selectQuantity = document.getElementById('quantity').value;
-  console.log(selectQuantity); 
-  // TODO: using those, add one item to the Cart
-
+  cart = [selectItem, selectQuantity];
 }
 
-// TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+var itemCounter = 0;
+function updateCounter() {
+  var itemCount = document.getElementById('itemCount');
+    itemCounter ++;
+    itemCount.textContent = ` (${itemCounter})`;
+}
 
-// TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
-  // TODO: Get the item and quantity from the form
-  // TODO: Add a new element to the cartContents div with that information
-}
+  var cartItemName = cart[0];
+  var cartQuantity = cart[1];
+  var cartContents = document.getElementById('cartContents');
+  var newCartList = document.createElement('ul');
+  cartContents.appendChild(newCartList);
+  var newCartItem = document.createElement('li');
+  newCartItem.textContent = `${cartItemName} x ${cartQuantity}`;
+  newCartList.appendChild(newCartItem);
+ }
 
 // Set up the "submit" event listener on the form.
 // This is the trigger for the app. When a user "submits" the form, it will
