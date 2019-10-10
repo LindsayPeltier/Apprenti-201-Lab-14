@@ -26,7 +26,7 @@ function handleSubmit(event) {
 
   event.preventDefault();
   addSelectedItemToCart();   
-  //cart.saveToLocalStorage();
+  cart.saveToLocalStorage();
   updateCounter();
   updateCartPreview();
 }
