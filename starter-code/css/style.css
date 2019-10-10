@@ -1,1 +1,88 @@
 /* TODO: Make it awesome */
+
+body{
+  background-color: #D7D4CC;
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  flex-direction: column;
+}
+
+header{
+  background-color: #A7C0BE;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1:nth-of-type(1){
+  font-size: 20pt;
+}
+
+main{
+  display: flex;
+  margin: 15px;
+  flex-direction: column;
+}
+
+.card{
+  margin: 2%;
+}
+
+fieldset{
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset label{
+  margin: 3% 0 3% 0;
+}
+
+.col-2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+footer{
+  background-color: #A7C0BE;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+nav ul{
+  display: flex;
+  justify-content: flex-start;
+}
+
+nav ul li{
+  margin: 25%;
+  display: flex;
+  flex-direction: row;
+}
+
+nav span{
+  margin-left: 6px;
+}
+
+.copy ol li{
+  margin: 1%;
+}
+
+.col-2 .card{
+  width: 50%;
+}
+
+#cartContents div{
+  display: flex;
+  flex-direction: row;
+  margin: 1.2%;
+}
