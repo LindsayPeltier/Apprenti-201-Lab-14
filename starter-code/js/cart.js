@@ -9,6 +9,7 @@ var cart;
 function loadCart() {
   var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
   cart = new Cart(cartItems);
+  console.log(cart);
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
@@ -29,7 +30,7 @@ function clearCart() {
 function showCart() {
 
   // Find the table body
-  var tableBody = document.getElementsByTagName('tbody');
+  var tableBody = document.querySelector('tbody');
   // Iterate over the items in the cart
   for (var i = 0; i < cart.items.length; i++) {
      // Create a TR
