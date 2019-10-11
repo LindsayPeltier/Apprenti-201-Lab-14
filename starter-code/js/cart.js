@@ -40,8 +40,10 @@ function showCart() {
     // Create a TD for the delete link, quantity,  and the item
     // Add the TR to the TBODY and each of the TD's to the TR
     var td = document.createElement('td');
-    td.textContent = 'X';
+    var button = document.createElement('button');
+    button.textContent = 'Delete this item';
     tr.appendChild(td);
+    td.appendChild(button);
 
     var image = document.createElement('img');
     //TODO: add images into cart
@@ -75,7 +77,7 @@ function showCart() {
 function removeItemFromCart(event) {
 
   // When a delete link is clicked, use cart.removeItem to remove the correct item
-  if(event.target.textContent === 'X'){
+  if(event.target.textContent === 'Delete this item'){
     cart.removeItem(event.target.parentElement);
   }
   // Save the cart back to local storage
