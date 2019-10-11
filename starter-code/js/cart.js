@@ -18,14 +18,14 @@ function renderCart() {
   showCart();
 }
 
-// TODO: Remove all of the rows (tr) in the cart table (tbody)
+// Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
   while(table.rows.length > 0){
     table.deleteRow(0);
   }
 }
 
-// TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
+// Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
   // Find the table body
@@ -56,13 +56,13 @@ function showCart() {
 
 function removeItemFromCart(event) {
 
-  // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
+  // When a delete link is clicked, use cart.removeItem to remove the correct item
   if(event.target.textContent === 'X'){
     cart.removeItem(event.target.parentElement);
   }
-  // TODO: Save the cart back to local storage
+  // Save the cart back to local storage
   localStorage.setItem('cart items', JSON.stringify(cart.items));
-  // TODO: Re-draw the cart table
+  // Re-draw the cart table
   renderCart();
 }
 
