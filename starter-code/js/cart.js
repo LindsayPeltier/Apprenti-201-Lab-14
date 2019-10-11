@@ -84,7 +84,7 @@ function renderInputs() {
     label.textContent = `${fieldNames[i]}: `;
     fieldSet.appendChild(label);
     var input = document.createElement('input');
-    input.setAttribute('id', `${fieldNames[i]}`);
+    input.setAttribute('class', `input`);
     fieldSet.appendChild(input);
   }
   var phoneLabel = document.createElement('label');
@@ -92,7 +92,7 @@ function renderInputs() {
   phoneLabel.textContent = 'phone number';
   fieldSet.appendChild(phoneLabel);
   var phoneNumber = document.createElement('input');
-  phoneNumber.setAttribute('id', 'phoneNumber');
+  phoneNumber.setAttribute('class', `input`);
   phoneNumber.setAttribute('type', 'tel');
   fieldSet.appendChild(phoneNumber);
 
@@ -101,49 +101,17 @@ function renderInputs() {
   creditCardLabel.textContent = 'credit card';
   fieldSet.appendChild(creditCardLabel);
   var creditCard = document.createElement('input');
-  creditCard.setAttribute('id', 'creditCard');
+  creditCard.setAttribute('class', `input`);
   creditCard.setAttribute('type', 'number');
   fieldSet.appendChild(creditCard);
   
 
   var submitButton = document.createElement('button');
+  submitButton.setAttribute('id', 'submitButton');
   submitButton.textContent = 'process order';
   fieldSet.appendChild(submitButton);
-
   
 
-  // var name = document.createElement('input');
-  // name.setAttribute('id', 'name');
-  // name.setAttribute('label', 'Name');
-  // fieldSet.appendChild(name);
-
-  // var street = document.createElement('input');
-  // street.setAttribute('id', 'street');
-  // street.setAttribute('label', 'Street');
-  // fieldSet.appendChild(street);
-
-  // var city = document.createElement('input');
-  // city.setAttribute('id', 'city');
-  // city.setAttribute('label', 'City');
-  // fieldSet.appendChild(city);
-
-  // var state = document.createElement('input');
-  // state.setAttribute('id', 'state');
-  // state.setAttribute('label', 'State');
-  // fieldSet.appendChild(state);
-  
-  // var zip = document.createElement('input');
-  // zip.setAttribute('id', 'zip');
-  // zip.setAttribute('label', 'Zip');
-  // fieldSet.appendChild(zip);
-  
-
-  // var phoneNumber = document.createElement('input');
-  // phoneNumber.setAttribute('id', 'phoneNumber');
-  // phoneNumber.setAttribute('type', 'tel');
-  // phoneNumber.setAttribute('label', 'Phone Number');
-  // fieldSet.appendChild(phoneNumber);
-  
 }
 
 function removeItemFromCart(event) {
@@ -158,6 +126,21 @@ function removeItemFromCart(event) {
   renderCart();
 }
 
+function orderMessage() {
+  var body = document.querySelector('body');
+  var div = document.createElement('div')
+  div.setAttribute('id', 'orderMessage');
+  div.textContent = 'Thank you for your order!';
+  body.appendChild(div);
+}
+
 // This will initialize the page and draw the cart on screen
-renderCart();
 renderInputs();
+renderCart();
+
+var submitButton = document.getElementById('submitButton');
+submitButton.addEventListener('click', clearCart);
+submitButton.addEventListener('click', orderMessage);
+
+
+
