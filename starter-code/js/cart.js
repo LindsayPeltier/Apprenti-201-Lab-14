@@ -67,11 +67,62 @@ function showCart() {
     var amountTd = document.createElement('td');
     amountTd.textContent = `Quantity: ${cart.items[i].quantity}`;
     tr.appendChild(amountTd);
-
-    
   }
- 
+}
 
+// Create function to render order form
+function renderInputs() {
+  var fieldNames = ['name', 'street', 'city', 'state', 'zip', 'phone-number'];
+  console.log(fieldNames);
+  var section2 = document.getElementsByClassName('deck')[1];
+  var fieldSet = document.createElement('fieldset');
+  section2.appendChild(fieldSet);
+  
+  for(var i = 0; i < fieldNames.length; i++){
+    var label = document.createElement('label');
+    label.setAttribute('for', `${fieldNames[i]}`);
+    label.textContent = `${fieldNames[i]}`;
+    fieldSet.appendChild(label);
+    var input = document.createElement('input');
+    input.setAttribute('id', `${fieldNames[i]}`);
+    fieldSet.appendChild(input);
+  }
+    
+
+  
+
+  // var name = document.createElement('input');
+  // name.setAttribute('id', 'name');
+  // name.setAttribute('label', 'Name');
+  // fieldSet.appendChild(name);
+
+  // var street = document.createElement('input');
+  // street.setAttribute('id', 'street');
+  // street.setAttribute('label', 'Street');
+  // fieldSet.appendChild(street);
+
+  // var city = document.createElement('input');
+  // city.setAttribute('id', 'city');
+  // city.setAttribute('label', 'City');
+  // fieldSet.appendChild(city);
+
+  // var state = document.createElement('input');
+  // state.setAttribute('id', 'state');
+  // state.setAttribute('label', 'State');
+  // fieldSet.appendChild(state);
+  
+  // var zip = document.createElement('input');
+  // zip.setAttribute('id', 'zip');
+  // zip.setAttribute('label', 'Zip');
+  // fieldSet.appendChild(zip);
+  
+
+  // var phoneNumber = document.createElement('input');
+  // phoneNumber.setAttribute('id', 'phoneNumber');
+  // phoneNumber.setAttribute('type', 'tel');
+  // phoneNumber.setAttribute('label', 'Phone Number');
+  // fieldSet.appendChild(phoneNumber);
+  
 }
 
 function removeItemFromCart(event) {
@@ -88,3 +139,4 @@ function removeItemFromCart(event) {
 
 // This will initialize the page and draw the cart on screen
 renderCart();
+renderInputs();
