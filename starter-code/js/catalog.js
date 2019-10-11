@@ -25,30 +25,33 @@ function populateForm() {
 function handleSubmit(event) {
 
   event.preventDefault();
-  addSelectedItemToCart();   
+  addSelectedItemToCart();  
   cart.saveToLocalStorage();
   updateCounter();
   updateCartPreview();
 }
 
+// Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
+  // suss out the item picked from the select list
   var dropdown = document.getElementById('items');
   var selectItem = dropdown.options[dropdown.selectedIndex].text;
-
+  // get the quantity
   var selectQuantity = document.getElementById('quantity').value;
-  cart = [selectItem, selectQuantity];
+  // using those, add one item to the Cart
+  cart.addItem(selectItem, selectQuantity);
 }
 
-var itemCounter = 0;
+
 function updateCounter() {
   var itemCount = document.getElementById('itemCount');
-    itemCounter ++;
-    itemCount.textContent = `  (${itemCounter})`;
+    itemCount.textContent = `  (${cart.items.length})`;
 }
 
 function updateCartPreview() {
-  var cartItemName = cart[0];
-  var cartQuantity = cart[1];
+  var dropdown = document.getElementById('items');
+  var cartItemName = dropdown.options[dropdown.selectedIndex].value;
+  var cartQuantity = document.getElementById('quantity').value;
   var cartContents = document.getElementById('cartContents');
   var newCartList = document.createElement('div');
   cartContents.appendChild(newCartList);
