@@ -72,7 +72,7 @@ function showCart() {
 
 // Create function to render order form
 function renderInputs() {
-  var fieldNames = ['name', 'street', 'city', 'state', 'zip', 'phone-number'];
+  var fieldNames = ['name', 'street', 'city', 'state', 'zip'];
   console.log(fieldNames);
   var section2 = document.getElementsByClassName('deck')[1];
   var fieldSet = document.createElement('fieldset');
@@ -81,13 +81,34 @@ function renderInputs() {
   for(var i = 0; i < fieldNames.length; i++){
     var label = document.createElement('label');
     label.setAttribute('for', `${fieldNames[i]}`);
-    label.textContent = `${fieldNames[i]}`;
+    label.textContent = `${fieldNames[i]}: `;
     fieldSet.appendChild(label);
     var input = document.createElement('input');
     input.setAttribute('id', `${fieldNames[i]}`);
     fieldSet.appendChild(input);
   }
-    
+  var phoneLabel = document.createElement('label');
+  phoneLabel.setAttribute('for', `phoneNumber`);
+  phoneLabel.textContent = 'phone number';
+  fieldSet.appendChild(phoneLabel);
+  var phoneNumber = document.createElement('input');
+  phoneNumber.setAttribute('id', 'phoneNumber');
+  phoneNumber.setAttribute('type', 'tel');
+  fieldSet.appendChild(phoneNumber);
+
+  var creditCardLabel = document.createElement('label');
+  creditCardLabel.setAttribute('for', `creditCard`);
+  creditCardLabel.textContent = 'credit card';
+  fieldSet.appendChild(creditCardLabel);
+  var creditCard = document.createElement('input');
+  creditCard.setAttribute('id', 'creditCard');
+  creditCard.setAttribute('type', 'number');
+  fieldSet.appendChild(creditCard);
+  
+
+  var submitButton = document.createElement('button');
+  submitButton.textContent = 'process order';
+  fieldSet.appendChild(submitButton);
 
   
 
