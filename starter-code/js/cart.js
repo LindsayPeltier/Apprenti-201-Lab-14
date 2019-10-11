@@ -62,7 +62,7 @@ function removeItemFromCart(event) {
     cart.removeItem(event.target.parentElement);
   }
   // Save the cart back to local storage
-  localStorage.setItem('cart items', JSON.stringify(cart.items));
+  localStorage.setItem('cart', JSON.stringify(cart.items));
   // Re-draw the cart table
   renderCart();
 }
