@@ -127,11 +127,15 @@ function removeItemFromCart(event) {
 }
 
 function orderMessage() {
-  var body = document.querySelector('body');
+  var card = document.getElementsByClassName('card')[1];
   var div = document.createElement('div')
-  div.setAttribute('id', 'orderMessage');
+  div.setAttribute('id', 'modal');
+  div.setAttribute('display', 'block');
   div.textContent = 'Thank you for your order!';
-  body.appendChild(div);
+  card.appendChild(div);
+  localStorage.clear();
+
+
 }
 
 // This will initialize the page and draw the cart on screen
