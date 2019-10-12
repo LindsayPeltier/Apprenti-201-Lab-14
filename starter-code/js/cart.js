@@ -39,26 +39,85 @@ function showCart() {
 
     // Create a TD for the delete link, quantity,  and the item
     // Add the TR to the TBODY and each of the TD's to the TR
+    var td = document.createElement('td');
+    var button = document.createElement('button');
+    button.textContent = 'Delete this item';
+    tr.appendChild(td);
+    td.appendChild(button);
+
+    var image = document.createElement('img');
+    //TODO: add images into cart
+    for(var j = 0; j < Product.allProducts.length; j++){
+      if(cart.items[i].product === Product.allProducts[j].name){
+        image.src = Product.allProducts[j].filePath;
+      }
+    }
+   
+    
+    var imageTd = document.createElement('td');
+    imageTd.setAttribute('id', 'image')
+    tr.appendChild(imageTd);
+    imageTd.appendChild(image);
+    
+   
     var productTd = document.createElement('td');
-    productTd.textContent = cart.items[i].product;
+    productTd.textContent = `Product: ${cart.items[i].product}`;
     tr.appendChild(productTd);
     
     var amountTd = document.createElement('td');
-    amountTd.textContent = cart.items[i].quantity;
+    amountTd.textContent = `Quantity: ${cart.items[i].quantity}`;
     tr.appendChild(amountTd);
-
-    var td = document.createElement('td');
-    td.textContent = 'X';
-    tr.appendChild(td);
   }
- 
+}
+
+// Create function to render order form
+function renderInputs() {
+  var fieldNames = ['name', 'street', 'city', 'state', 'zip'];
+  console.log(fieldNames);
+  var section2 = document.getElementsByClassName('deck')[1];
+  var fieldSet = document.createElement('fieldset');
+  section2.appendChild(fieldSet);
+  
+  for(var i = 0; i < fieldNames.length; i++){
+    var label = document.createElement('label');
+    label.setAttribute('for', `${fieldNames[i]}`);
+    label.textContent = `${fieldNames[i]}: `;
+    fieldSet.appendChild(label);
+    var input = document.createElement('input');
+    input.setAttribute('class', `input`);
+    fieldSet.appendChild(input);
+  }
+  var phoneLabel = document.createElement('label');
+  phoneLabel.setAttribute('for', `phoneNumber`);
+  phoneLabel.textContent = 'phone number';
+  fieldSet.appendChild(phoneLabel);
+  var phoneNumber = document.createElement('input');
+  phoneNumber.setAttribute('class', `input`);
+  phoneNumber.setAttribute('type', 'tel');
+  fieldSet.appendChild(phoneNumber);
+
+  var creditCardLabel = document.createElement('label');
+  creditCardLabel.setAttribute('for', `creditCard`);
+  creditCardLabel.textContent = 'credit card';
+  fieldSet.appendChild(creditCardLabel);
+  var creditCard = document.createElement('input');
+  creditCard.setAttribute('class', `input`);
+  creditCard.setAttribute('type', 'number');
+  fieldSet.appendChild(creditCard);
+  
+
+  var submitButton = document.createElement('button');
+  submitButton.setAttribute('id', 'submitButton');
+  submitButton.textContent = 'process order';
+  fieldSet.appendChild(submitButton);
+  
 
 }
 
 function removeItemFromCart(event) {
 
   // When a delete link is clicked, use cart.removeItem to remove the correct item
-  if(event.target.textContent === 'X'){
+  if(event.target.textContent === 'Delete this item'){
     cart.removeItem(event.target.parentElement);
   }
   // Save the cart back to local storage
@@ -67,5 +126,25 @@ function removeItemFromCart(event) {
   renderCart();
 }
 
+function orderMessage() {
+  var card = document.getElementsByClassName('card')[1];
+  var div = document.createElement('div')
+  div.setAttribute('id', 'modal');
+  div.setAttribute('display', 'block');
+  div.textContent = 'Thank you for your order!';
+  card.appendChild(div);
+  localStorage.clear();
+
+
+}
+
 // This will initialize the page and draw the cart on screen
+renderInputs();
 renderCart();
+
+var submitButton = document.getElementById('submitButton');
+submitButton.addEventListener('click', clearCart);
+submitButton.addEventListener('click', orderMessage);
+
+
+
